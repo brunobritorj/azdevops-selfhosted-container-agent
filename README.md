@@ -8,7 +8,7 @@ From [Microsoft :: Run a self-hosted agent in Docker](https://learn.microsoft.co
 
 2. Start the image
     ```
-    docker run -e AZP_URL=<Azure DevOps instance> -e AZP_TOKEN=<PAT token> azdevops-agent:latest
+    docker run -e AZP_URL=<Azure DevOps instance> -e AZP_TOKEN=<PAT token> ghcr.io/brunobritorj/azdevops-selfhosted-container-agent:main
     ```
 
 3. Check the new registed agent at AzDevOps portal, ```{Organization} / Settings / Agent pools / {Pool} / Agents```
