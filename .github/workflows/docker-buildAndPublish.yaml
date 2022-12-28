@@ -43,10 +43,13 @@ jobs:
         uses: docker/metadata-action@98669ae865ea3cffbcbaa878cf57c20bbf1c6c38
         with:
           images: |
-            ghcr.io/${{ env.OWNER }}/azdevops-selfhosted/ubuntu2004
-            ${{ env.OWNER }}/azdevops-selfhosted-ubuntu2004
+            ghcr.io/${{ env.OWNER }}/azdevops-selfhosted
+            ${{ env.OWNER }}/azdevops-selfhosted
+          flavor: |
+            latest=true
+            prefix=ubuntu2004,onlatest=true
           tags: |
-            type=raw,value=latest
+            type=ref,event=push
             type=semver,pattern={{version}}
             
       - name: Build and push Docker image
