@@ -13,7 +13,7 @@ env:
   REPO_OWNER: brunobritorj #${{ github.repository.owner }}
 
 jobs:
-  ubuntu2204:
+  ubuntu2004:
 
     name: Docker Build and Push
     runs-on: ubuntu-latest
@@ -46,12 +46,12 @@ jobs:
         id: build-and-push
         uses: docker/build-push-action@ac9327eae2b366085ac7f6a2d02df8aa8ead720a
         with:
-          context: ./ubuntu2204
+          context: ./ubuntu2004
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
 
-  ubuntu2204-once:
+  ubuntu2004-once:
 
     name: Docker Build and Push
     runs-on: ubuntu-latest
@@ -84,7 +84,7 @@ jobs:
         id: build-and-push
         uses: docker/build-push-action@ac9327eae2b366085ac7f6a2d02df8aa8ead720a
         with:
-          context: ./ubuntu2204
+          context: ./ubuntu2004-once
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
