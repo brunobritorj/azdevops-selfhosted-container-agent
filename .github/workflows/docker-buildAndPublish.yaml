@@ -44,7 +44,7 @@ jobs:
         with:
           images: |
             ghcr.io/${{ env.OWNER }}/azdevops-selfhosted/ubuntu2004
-            ${{ env.OWNER }}/azdevops-selfhosted/ubuntu2004
+            ${{ env.OWNER }}/azdevops-selfhosted-ubuntu2004
           tags: |
             type=raw,value=latest
             type=semver,pattern={{version}}
