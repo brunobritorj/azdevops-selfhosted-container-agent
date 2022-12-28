@@ -10,7 +10,7 @@ You can use this image to add self-host agents to a pool in your Azure DevOps or
 
 2. Run the container using the proper image
     ```
-    docker run -e AZP_URL={AzDevOps Org url} -e AZP_TOKEN={PAT} ghcr.io/brunobritorj/azdevops-selfhosted/ubuntu2004
+    docker run -e AZP_URL={AzDevOps Org url} -e AZP_TOKEN={PAT} ghcr.io/brunobritorj/azdevops-selfhosted:ubuntu2004
     ```
 
 3. Check the new registed agent at AzDevOps portal, ```{Organization} / Settings / Agent pools / {Pool} / Agents```
