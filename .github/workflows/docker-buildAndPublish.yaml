@@ -47,7 +47,7 @@ jobs:
             ${{ env.OWNER }}/azdevops-selfhosted
           flavor: |
             latest=true
-            prefix=ubuntu2004,onlatest=true
+            prefix=ubuntu2004
           tags: |
             type=ref,event=branch
             type=semver,pattern={{version}}
