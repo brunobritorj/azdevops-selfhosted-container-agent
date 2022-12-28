@@ -50,7 +50,6 @@ jobs:
             prefix=ubuntu2004-
           tags: |
             type=raw,value=latest
-            type=ref,event=tag
             type=semver,pattern={{version}}
             
       - name: Build and push Docker image
