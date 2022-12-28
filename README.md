@@ -6,9 +6,11 @@
 
 # Supported tags and respective ```Dockerfile``` links
 
-At this moment, the only available flavor is the Ubuntu 20.04 basic instalation, published by these tags:
-
-  - [```ubuntu2004-0.1.6```, ```ubuntu2004```, ```latest```](https://github.com/brunobritorj/azdevops-selfhosted-container-agent/blob/v0.1.6/ubuntu2004/Dockerfile)
+## Current versions
+  - [```ubuntu2004-0.2.0```, ```ubuntu2004```, ```latest```](https://github.com/brunobritorj/azdevops-selfhosted-container-agent/blob/v0.2.0/ubuntu2004/Dockerfile)
+  - [```ubuntu2004-iac-0.2.0```, ```ubuntu2004-iac```](https://github.com/brunobritorj/azdevops-selfhosted-container-agent/blob/v0.2.0/ubuntu2004-iac/Dockerfile)
+## Old versions
+  - [```ubuntu2004-0.1.6```](https://github.com/brunobritorj/azdevops-selfhosted-container-agent/blob/v0.1.6/ubuntu2004/Dockerfile)
 
 # How to use this image
 
