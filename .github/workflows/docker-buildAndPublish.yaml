@@ -10,7 +10,7 @@ on:
 env:
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }}
-  REPO_OWNER: ${{ github.repository.owner }}
+  REPO_OWNER: brunobritorj #${{ github.repository.owner }}
 
 jobs:
   build-and-push-image:
