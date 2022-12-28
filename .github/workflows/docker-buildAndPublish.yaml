@@ -10,7 +10,7 @@ on:
 env:
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }}
-
+  REPO_OWNER: ${{ github.repository.owner }}
 
 jobs:
   build-and-push-image:
@@ -39,7 +39,7 @@ jobs:
         with:
           images: |
             ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
-            ${{ env.REGISTRY }}/${{ env.GITHUB_REPOSITORY_OWNER }}/azdevops-selfhosted/ubuntu-2004
+            ${{ env.REGISTRY }}/${{ env.REPO_OWNER }}/azdevops-selfhosted/ubuntu-2004
           tags: |
             type=raw,value=latest
 
