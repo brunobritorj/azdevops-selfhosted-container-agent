@@ -49,7 +49,7 @@ jobs:
             latest=true
             prefix=ubuntu2004,onlatest=true
           tags: |
-            type=ref,event=push
+            type=ref
             type=semver,pattern={{version}}
             
       - name: Build and push Docker image
