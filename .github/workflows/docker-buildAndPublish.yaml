@@ -39,7 +39,7 @@ jobs:
         with:
           images: |
             ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
-            azdevops-selfhosted/ubuntu-2004
+            ${{ env.REGISTRY }}/azdevops-selfhosted/ubuntu-2004
           tags: |
             type=raw,value=latest
 
