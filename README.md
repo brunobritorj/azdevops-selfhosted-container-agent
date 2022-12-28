@@ -1,6 +1,8 @@
-# Az DevOps self-hosted container agent
+# Azure DevOps self-hosted container agent
 
-From [Microsoft :: Run a self-hosted agent in Docker](https://learn.microsoft.com/en-us/azure/devops/pipelines/agents/docker?view=azure-devops#linux)
+Thanks to [Microsoft :: Run a self-hosted agent in Docker](https://learn.microsoft.com/en-us/azure/devops/pipelines/agents/docker?view=azure-devops#linux) authors.
+
+You can use this image to add self-host agents to a pool in your Azure DevOps organization.
 
 ## How to
 
@@ -19,11 +21,11 @@ Then only two mandatory vars are ```AZP_URL``` and ```AZP_TOKEN```, but you can 
 
 |Env variable|Description|
 |-|-|
-|AZP_URL|The URL of the Azure DevOps or Azure DevOps Server instance.|
-|AZP_TOKEN|Personal Access Token (PAT) with Agent Pools (read, manage) scope, created by a user who has permission to configure agents, at AZP_URL.|
-|AZP_AGENT_NAME|Agent name (default value: the container hostname).|
-|AZP_POOL|Agent pool name (default value: Default).|
-|AZP_WORK|Work directory (default value: _work).|
+|AZP_URL|The Azure DevOps Organization URL|
+|AZP_TOKEN|Personal Access Token (PAT) with Agent Pools (read, manage) scope|
+|AZP_AGENT_NAME|Agent name (default: Container hostname).|
+|AZP_POOL|Agent Pool name (default: Default).|
+|AZP_WORK|Work directory (default: _work).|
 
 We can also specify the ```--once``` arg in order to the agent accept only one job.
 
