@@ -2,6 +2,10 @@ FROM ubuntu:20.04
 RUN DEBIAN_FRONTEND=noninteractive apt-get update
 RUN DEBIAN_FRONTEND=noninteractive apt-get upgrade -y
 
+# Copy SSH config
+RUN mkdir ~/.ssh -p
+COPY sshconfig ~/.ssh/config
+
 # Install basic tools
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -y -qq --no-install-recommends \
     apt-transport-https \
