@@ -6,7 +6,10 @@ on:
       - "main" 
     paths:
       - ubuntu2004/**
-
+  create:
+    tags:
+      - 'v*.*.*'
+      
 env:
   IMAGE_NAME: ${{ github.repository }}
   OWNER: ${{ github.repository_owner }}
