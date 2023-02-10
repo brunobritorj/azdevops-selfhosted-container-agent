@@ -7,9 +7,10 @@
 # Supported tags and respective ```Dockerfile``` links
 
 ## Current versions
-  - [```ubuntu2004-0.3.2```, ```ubuntu2004```, ```latest```](https://github.com/brunobritorj/azdevops-selfhosted-container-agent/blob/ubuntu2004-0.3.2/ubuntu2004/Dockerfile)
+  - [```ubuntu2004-0.3.3```, ```ubuntu2004```, ```latest```](https://github.com/brunobritorj/azdevops-selfhosted-container-agent/blob/ubuntu2004-0.3.3/ubuntu2004/Dockerfile)
   - [```ubuntu2004-iac-0.2.0```, ```ubuntu2004-iac```](https://github.com/brunobritorj/azdevops-selfhosted-container-agent/blob/v0.2.0/ubuntu2004-iac/Dockerfile)
 ## Old versions
+  - [```ubuntu2004-0.3.2```](https://github.com/brunobritorj/azdevops-selfhosted-container-agent/blob/ubuntu2004-0.3.2/ubuntu2004/Dockerfile)
   - [```ubuntu2004-0.2.0```](https://github.com/brunobritorj/azdevops-selfhosted-container-agent/blob/v0.2.0/ubuntu2004/Dockerfile)
   - [```ubuntu2004-0.1.6```](https://github.com/brunobritorj/azdevops-selfhosted-container-agent/blob/v0.1.6/ubuntu2004/Dockerfile)
 
