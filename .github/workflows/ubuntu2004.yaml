@@ -9,7 +9,9 @@ on:
   create:
     tags:
       - 'v*.*.*'
-      
+    paths:
+      - ubuntu2004/**
+
 env:
   IMAGE_NAME: ${{ github.repository }}
   OWNER: ${{ github.repository_owner }}
