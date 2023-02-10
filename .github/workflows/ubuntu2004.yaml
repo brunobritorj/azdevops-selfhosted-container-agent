@@ -9,7 +9,6 @@ on:
   create:
     tags:
       - 'ubuntu2004-*.*.*'
-      - '!ubuntu2004-iac'
     paths:
       - ubuntu2004/**
 
