@@ -3,7 +3,7 @@ name: Build
 on:
   push:
     branches:
-      - "buildimprovements" 
+      - "main" 
     paths:
       - ubuntu2004/**
 
