@@ -7,11 +7,11 @@
 # Supported tags and respective ```Dockerfile``` links
 
 ## Current versions
-  - [```ubuntu2004-0.3.3```, ```ubuntu2004```, ```latest```](https://github.com/brunobritorj/azdevops-selfhosted-container-agent/blob/ubuntu2004-0.3.3/ubuntu2004/Dockerfile)
-  - [```ubuntu2004-iac-0.2.0```, ```ubuntu2004-iac```](https://github.com/brunobritorj/azdevops-selfhosted-container-agent/blob/v0.2.0/ubuntu2004-iac/Dockerfile)
+  - [```latest```, ```ubuntu2004```, ```ubuntu2004-0.3.3```](https://github.com/brunobritorj/azdevops-selfhosted-container-agent/blob/ubuntu2004-0.3.3/ubuntu2004/Dockerfile) (with basic tools)
+  - [```ubuntu2004-iac```, ```ubuntu2004-iac-0.3.3```](https://github.com/brunobritorj/azdevops-selfhosted-container-agent/blob/ubuntu2004-iac-0.3.3/ubuntu2004-iac/Dockerfile) (which adds Ansible and Terraform)
 ## Old versions
-  - [```ubuntu2004-0.3.2```](https://github.com/brunobritorj/azdevops-selfhosted-container-agent/blob/ubuntu2004-0.3.2/ubuntu2004/Dockerfile)
   - [```ubuntu2004-0.2.0```](https://github.com/brunobritorj/azdevops-selfhosted-container-agent/blob/v0.2.0/ubuntu2004/Dockerfile)
+  - [```ubuntu2004-iac-0.2.0```](https://github.com/brunobritorj/azdevops-selfhosted-container-agent/blob/v0.2.0/ubuntu2004-iac/Dockerfile)
   - [```ubuntu2004-0.1.6```](https://github.com/brunobritorj/azdevops-selfhosted-container-agent/blob/v0.1.6/ubuntu2004/Dockerfile)
 
 # How to use this image
@@ -31,12 +31,21 @@ When running, you can supply the ```--once``` argument in order to make the cont
 If you want to host a single self-host agent in a Docker node, you can use the following command:
 
 ```
-$ docker run -e AZP_URL={AzDevOps Org url} -e AZP_TOKEN={PAT} brunobritorj/azdevops-selfhosted:ubuntu2004
+$ docker run -e AZP_URL={AzDevOps Org url} -e AZP_TOKEN={PAT} brunobritorj/azdevops-selfhosted
 ```
 
 ## Running self-hosted agents on Kubernetes
 
-If you want to host self-hosted agents in a Kubernetes cluster, you can use this deployment file as reference:
+If you want to host self-hosted agents in a Kubernetes cluster, first create a secret with your Az DevOps organization values:
+
+```
+$ kubectl create secret generic azdevops \
+  --from-literal=AZP_URL={AzDevOps Org url} \
+  --from-literal=AZP_TOKEN={PAT} \
+  --from-literal=AZP_POOL={Pool}
+```
+
+Then you can use this manifest to create the deployment:
 
 ```
 apiVersion: apps/v1
@@ -46,7 +55,7 @@ metadata:
   labels:
     app: azdevops-agent
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       app: azdevops-agent
@@ -57,7 +66,7 @@ spec:
     spec:
       containers:
       - name: azdevops-agent
-        image: brunobritorj/azdevops-selfhosted:ubuntu2004
+        image: brunobritorj/azdevops-selfhosted
         args: ["--once"]
         env:
           - name: AZP_URL
@@ -75,13 +84,4 @@ spec:
               secretKeyRef:
                 name: azdevops
                 key: AZP_POOL
-```
-
-Note that this deployment specification requires 3 secrets with your Az DevOps organization values which you can create with the following command:
-
-```
-$ kubectl create secret generic azdevops \
-  --from-literal=AZP_URL={AzDevOps Org url} \
-  --from-literal=AZP_TOKEN={PAT} \
-  --from-literal=AZP_POOL={Pool}
 ```
