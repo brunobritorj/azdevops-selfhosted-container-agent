@@ -1,4 +1,4 @@
-name: Build
+name: ubuntu2004
 
 on:
   push:
@@ -8,7 +8,8 @@ on:
       - ubuntu2004/**
   create:
     tags:
-      - 'v*.*.*'
+      - 'ubuntu2004-*.*.*'
+      - '!ubuntu2004-iac'
     paths:
       - ubuntu2004/**
 
@@ -54,7 +55,8 @@ jobs:
             ghcr.io/${{ env.OWNER }}/azdevops-selfhosted
             ${{ env.OWNER }}/azdevops-selfhosted
           tags: |
-            type=raw,value=ubuntu2004-${{ env.BRANCH }}
+            type=raw,value=ubuntu2004-${{ github.ref_name }},enable=${{ !contains(github.ref, 'refs/tags/') }}
+            type=raw,value=${{ github.ref_name }},enable=${{ contains(github.ref, 'refs/tags/') }}
             type=raw,value=ubuntu2004,enable=${{ contains(github.ref, 'refs/tags/') }}
             type=raw,value=latest,enable=${{ contains(github.ref, 'refs/tags/') }}
 
