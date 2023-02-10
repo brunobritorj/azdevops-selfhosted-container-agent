@@ -1,9 +1,11 @@
 FROM ubuntu:20.04
-RUN DEBIAN_FRONTEND=noninteractive apt-get update
-RUN DEBIAN_FRONTEND=noninteractive apt-get upgrade -y
+
+ARG DEBIAN_FRONTEND=noninteractive
+RUN apt update
+RUN apt upgrade -y
 
 # Install basic tools
-RUN DEBIAN_FRONTEND=noninteractive apt-get install -y -qq --no-install-recommends \
+RUN apt install -y --no-install-recommends \
     apt-transport-https \
     apt-utils \
     ca-certificates \
