@@ -3,12 +3,13 @@ name: ubuntu2004
 on:
   push:
     branches:
-      - "main" 
+      - main
     paths:
       - ubuntu2004/**
   create:
     tags:
       - 'ubuntu2004-*.*.*'
+      - '!ubuntu2004-iac*'
     paths:
       - ubuntu2004/**
 
