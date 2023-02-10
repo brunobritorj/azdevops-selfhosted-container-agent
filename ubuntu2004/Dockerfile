@@ -1,10 +1,13 @@
 FROM ubuntu:20.04
 
+# SSH configuration file
+RUN mkdir ~/.ssh -p
+COPY sshconfig ~/.ssh/config
+
+# Install basic tools
 ARG DEBIAN_FRONTEND=noninteractive
 RUN apt update
 RUN apt upgrade -y
-
-# Install basic tools
 RUN apt install -y --no-install-recommends \
     apt-transport-https \
     apt-utils \
