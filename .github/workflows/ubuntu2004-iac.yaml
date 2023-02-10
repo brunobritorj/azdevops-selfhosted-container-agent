@@ -1,16 +1,16 @@
-name: ubuntu2004
+name: ubuntu2004-iac
 
 on:
   push:
     branches:
-      - "main" 
+      - main
     paths:
-      - ubuntu2004/**
+      - ubuntu2004-iac/**
   create:
     tags:
-      - 'ubuntu2004-*.*.*'
+      - 'ubuntu2004-iac-*.*.*'
     paths:
-      - ubuntu2004/**
+      - ubuntu2004-iac/**
 
 env:
   IMAGE_NAME: ${{ github.repository }}
@@ -18,9 +18,9 @@ env:
 
 jobs:
 
-  ubuntu2004:
+  ubuntu2004-iac:
 
-    name: ubuntu2004
+    name: ubuntu2004-iac
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -53,16 +53,15 @@ jobs:
             ghcr.io/${{ env.OWNER }}/azdevops-selfhosted
             ${{ env.OWNER }}/azdevops-selfhosted
           tags: |
-            type=raw,value=ubuntu2004-${{ github.ref_name }},enable=${{ !contains(github.ref, 'refs/tags/') }}
+            type=raw,value=ubuntu2004-iac-${{ github.ref_name }},enable=${{ !contains(github.ref, 'refs/tags/') }}
             type=raw,value=${{ github.ref_name }},enable=${{ contains(github.ref, 'refs/tags/') }}
-            type=raw,value=ubuntu2004,enable=${{ contains(github.ref, 'refs/tags/') }}
-            type=raw,value=latest,enable=${{ contains(github.ref, 'refs/tags/') }}
+            type=raw,value=ubuntu2004-iac,enable=${{ contains(github.ref, 'refs/tags/') }}
 
       - name: Build and push Docker image
         id: build-and-push
         uses: docker/build-push-action@ac9327eae2b366085ac7f6a2d02df8aa8ead720a
         with:
-          context: ./ubuntu2004
+          context: ./ubuntu2004-iac
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
