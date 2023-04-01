@@ -1,0 +1,9 @@
+azdevops:
+  url: # https://dev.azure.com/<YOUR_ORG_NAME>
+  pool: Default
+  workdir: _work
+  token: # <YOUR_PAT>
+
+pod:
+  replicaCount: 2
+  tag: latest

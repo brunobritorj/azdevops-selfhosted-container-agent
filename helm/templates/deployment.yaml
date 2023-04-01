@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}
+  namespace: {{ .Release.Namespace }}
+  labels:
+    app: azdevops-selfhosted-agent
+spec:
+  replicas: {{ .Values.pod.replicaCount }}
+  selector:
+    matchLabels:
+      app: azdevops-selfhosted-agent
+  template:
+    metadata:
+      labels:
+        app: azdevops-selfhosted-agent
+    spec:
+      containers:
+      - name: agent
+        image: brunobritorj/azdevops-selfhosted:{{ .Values.pod.tag }}
+        args: [ "--once" ]
+        env:
+        - name: AZP_URL
+          value: {{ required "A value for 'azdevops.url' is required!" .Values.azdevops.url }}
+        - name: AZP_POOL
+          value: {{ .Values.azdevops.pool }}
+        - name: AZP_WORK
+          value: {{ .Values.azdevops.workdir }}
+        - name: AZP_TOKEN
+          valueFrom:
+            secretKeyRef:
+              name: {{ .Release.Name }}
+              key: AZP_TOKEN
